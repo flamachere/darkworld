@@ -11,8 +11,6 @@
     };
     echo $iconBlock;
 
-    mysql_close($db);
-
 ?>
 <!DOCTYPE html>
 <html>
