@@ -1,6 +1,11 @@
 <?php
-    $db = new PDO('mysql:host=localhost;dbname=darkwold', 'root', '99ycapz!');
-    
+    // ouverture de la base de données
+    $db = mysql_connect("localhost", "root", "99ycapz!") or die("Impossible de se connecter : " . mysql_error());
+    // query sur les Icones
+    $qdb = $db->query('Select * FROM icon');
+
+    mysql_close($db);
+
 ?>
 <!DOCTYPE html>
 <html>
