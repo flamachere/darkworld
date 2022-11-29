@@ -7,8 +7,9 @@
     // création des marqueurs
     foreach ($result as $row) {
       $row = $rdb->fetch_assoc();
-      $iconBlock = $iconBlock + "var i".$row['type'].$row['nom']." = L.icon({ iconURL: 'img/'".$row['type'].'/'.$row['nom'].".png, iconSize: [55.84], popupAnchor: [-3, -76]});"." \n "});
-    }
+      $iconBlock = $iconBlock + "var i".$row['type'].$row['nom']." = L.icon({ iconURL: 'img/'".$row['type'].'/'.$row['nom'].".png, iconSize: [55.84], popupAnchor: [-3, -76]});"." \n ";
+    };
+    echo $iconBlock;
 
     mysql_close($db);
 
