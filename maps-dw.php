@@ -1,8 +1,13 @@
 <?php
     // ouverture de la base de données
-    $db = mysql_connect("localhost", "root", "99ycapz!") or die("Impossible de se connecter : " . mysql_error());
+    $db = new mysqli("localhost", "root", "99ycapz!", "darkworld");
     // query sur les Icones
-    $qdb = $db->query('Select * FROM icon');
+    $rdb = $db->query("SELECT * FROM icon;");
+
+    // création des marqueurs
+    foreach ($result as $row) {
+      $row = $rdb->fetch_assoc();
+    }
 
     mysql_close($db);
 
