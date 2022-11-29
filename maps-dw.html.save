@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cartes du DarkWorld</title>
+    	<meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/dark-hive/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/darkly/bootstrap.min.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+        <style>
+            #map { height: 1080px; }
+            #map1 { height: 1080px; }
+        </style>
+        <script>
+            $(function() {
+
+                var iconDW = L.icon({
+                    iconURL: 'https://cdn-icons-png.flaticon.com/512/1423/1423756.png',
+                    shadowURL: 'https://cdn-icon-png.flaticon.com/512/1423/1423756.png',
+                    
+                    iconSize: [38, 38],
+                    shadowSize: [39, 39],
+                    shadowAnchor: [4, 38],
+                    iconAnchor: [22, 94]
+                });
+
+		// carte 1                
+                //var map1 = L.map('map1').setView([42.51961, -70.8966], 6);
+		
+		// Icones
+		var vampires = L.icon({iconURL: '
+	
+		// layers
+                var divers = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: 'OpenStreetMap contributors'});
+		var poi = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: 'OpenStreetMap contrinbutors'});
+		var draws = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: 'OpenStreetMap contributors'});
+
+                var circle = L.circle([42.51961, -70.8966], 550000, {
+                    color: 'black',
+                    fillcolor: '#EEE',
+                    fillOpacity: 0.5
+                });
+
+                var mArkhaam = L.marker([42.77521, -71.07597], { title: "Arkhaam" });
+		
+		var mAlexOThorn = L.marker([42.35376, -71.10536], { title: "Tour d'Alexander O'Thorn" });
+
+		var mOldRoses = L.marker([42.75864, -71.09977], { title: "The Old Roses"});
+
+
+		// Groups 
+		var cities = L.layerGroup([mArkhaam]);
+		var poig = L.layerGroup([mAlexOThorn, mOldRoses])
+
+		var map1 = L.map('map1', {center: [42.51961, -70.8966], zoom: 6, layers: [divers, cities]});
+
+		// Layers
+		var baseMaps = {
+			"Carte Générale": divers
+		};
+
+		var overlayMaps = {
+			"Points d'Interet Généraux": poig,
+			"Dessin / Zones": circle,
+			"Villes": cities
+		};
+
+		// Layer Control
+		var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map1);
+		
+            });
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">DarkWorld - Cartes</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Le Dôme
+                      <span class="visually-hidden">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Arkhaam Centre</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Régions</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://www.twitch.tv/latelierdesreves" target="_blank">Twitch</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Autres cartes</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-sm-2" type="text" placeholder="Recherche">
+                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        <div id="map1"></div>
+    </body>
+</html>
